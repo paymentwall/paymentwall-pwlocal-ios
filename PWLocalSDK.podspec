@@ -8,8 +8,11 @@ Pod::Spec.new do |s|
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.author       = { "tien.vu" => "tien@paymentwall.com" }
   s.platform     = :ios, "8.0"
-  s.source       = { :git => "https://github.com/paymentwall/paymentwall-pwlocal-ios.git", :tag => "#{s.version}" }
+  s.requires_arc = true
 
-  s.source_files  = "include"
+  s.source       = { :git => "https://github.com/paymentwall/paymentwall-pwlocal-ios.git", :tag => "#{s.version}" }
+  s.source_files  = "include" , "**/*.{h,m}"
+
   s.vendored_libraries   = "libPWLocalSDK.a"
+  s.libraries = "PWLocalSDK"
 end
