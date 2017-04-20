@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
 
   # s.source_files  = "Classes", "Classes/**/*.{h,m}"
   # s.exclude_files = "Classes/Exclude"
-  s.public_header_files = "**/*.h"
+  s.public_header_files = "include/*.h"
 
   s.vendored_libraries   = "libPWLocalSDK.a"
 end
