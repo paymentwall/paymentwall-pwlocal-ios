@@ -4,8 +4,6 @@ Do you need to have an ability to accept payments from mobile users in different
 PWLocal iOS SDK will become a native part of your application, it eliminates the necessity to open a web browser for payments, as a result you will receive a higher conversions rate.
 All you have to do is import the library into your iOS project and start using our SDK to accept in-app payments. It is quick and easy! We'll guide you through the process here.
 
-
-
 ## How does it work ?	
 1. The customer clicks on the **Buy** button inside your application.
 2. The PWLocal SDK is called at this moment and opens application dialog with the list of payment systems.
@@ -29,7 +27,7 @@ You can obtain these Paymentwall API credentials in the application settings of 
 ### With Cocoapods:
 1. Add `pod 'PWLocalSDK'` into your podfile
 2. Run `pod install` in your terminal
-3. If you using Swift: Create a `Project-Bridging-Header.h` and add it in your Build settings's `Objective-C Bridging Header`
+3. If you are using Swift : Create a `Project-Bridging-Header.h` and add it in your Build settings's `Objective-C Bridging Header`
 
 ## Accepting your first payment
 ### Import
