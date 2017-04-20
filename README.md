@@ -14,7 +14,7 @@ All you have to do is import the library into your iOS project and start using o
 
 ## Credentials
 Your mobile integration requires a Project key.  
-You can obtain these Paymentwall API credentials in the application settings of your Merchant Account at paymentwall.com
+You can obtain these Paymentwall API credentials in the application settings of your Merchant Account at [Paymentwall](https://www.paymentwall.com/)
 
 ## Add SDK to your project
 ### Manually:
