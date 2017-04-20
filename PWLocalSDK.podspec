@@ -10,8 +10,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "8.0"
   s.source       = { :git => "https://github.com/paymentwall/paymentwall-pwlocal-ios.git", :tag => "#{s.version}" }
 
-  # s.source_files  = "Classes", "Classes/**/*.{h,m}"
-  # s.exclude_files = "Classes/Exclude"
+  s.source_files  = "include"
   s.public_header_files = "include/*.h"
 
   s.vendored_libraries   = "libPWLocalSDK.a"
