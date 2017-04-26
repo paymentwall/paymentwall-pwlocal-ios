@@ -9,12 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "PWLocalResponse.h"
-#import "CartDefaultWidget.h"
-#import "DigitalGoodsDefautWidget.h"
-#import "DigitalGoodsFlexibleWidget.h"
-#import "VirtualCurrency.h"
-#import "Subscription.h"
-#import "PWLocalStatusResponse.h"
 
 @protocol PWLocalSDKDelegate <NSObject>
 
@@ -23,58 +17,28 @@
 
 @end
 
-typedef NS_ENUM(int, apiType) {
-    VIRTUAL_CURRENCY,
-    DIGITAL_GOODS,
-    CART
-};
-
 @interface PWLocalSDK : NSObject
 
-/*!
- @brief Show PWLocal ViewController with params.
- @discussion The method use <b>params</b> to create request for display PWLocal payment form in webview.
- 
- @param parentViewController The viewController you want to present PWLocal view controller on.
- @param delegate Set to receive response from SDK for success/fail/cancel payment.
- @param paymentType Can be VIRTUAL_CURRENCY / DIGITAL_GOODS / CART.
- @param params Can be Dictionary or any of the defined class, refer their headers for required property or [PWLocal docs]: https://www.paymentwall.com/en/documentation/Digital-Goods-API/710 "PWLocal params".
- @param secretKey Set this if you want the SDK to calculate signature for your params, It's suggest that you calculate signature by your server for more secure and leave this param nil.
- @param downloadURL Set to track your app stat for risk.
- */
-+(void)showPWLocalViewControllerWithViewController:(UIViewController * _Nonnull)parentViewController delegate:(id _Nullable)delegate type:(apiType)paymentType params:(id _Nonnull)params secretKey:(NSString * _Nullable)secretKey downloadURL:(NSString * _Nullable)downloadURL;
++(void)showPWLocalViewControllerWithViewController:(UIViewController * _Nonnull)parentViewController params:(id _Nonnull)params secretKey:(NSString * _Nullable)secretKey downloadURL:(NSString * _Nullable)downloadURL;
+
+// Check payment status
+// SUPPORT DIGITAL GOODS FLEXIBLE WIDGET ONLY
+//+(void)checkPaymentStatusWithKey:(NSString *) key agExternalId:(NSString*) agExternalId uid:(NSString*) uid signVersion:(int)signVersion andSecretKey:(NSString*) secret completion:(PWLocalPaymentStatusCompletionBlock)block;
 
 /**
- Check payment status, SUPPORT DIGITAL GOODS FLEXIBLE WIDGET ONLY
-
- @param key Public project key
- @param agExternalId Merchant's product SKU ID
- @param uid ID of the end-user in merchant's system
- @param signVersion Sign version of project
- @param secret Secret project key
- @param completionBlock Do after response fetched
- */
-+(void)checkPaymentStatusWithKey:(NSString * _Nonnull) key agExternalId:(NSString* _Nonnull) agExternalId uid:(NSString* _Nonnull) uid signVersion:(int)signVersion andSecretKey:(NSString* _Nullable) secret completion:(void (^_Nullable)(PWLocalStatusResponse * _Nullable response))completionBlock;
-
-/*!
- @brief Extra headers required to process PWLocal.
+ Extra headers required to process PWLocal, get this to add into your request if you are going to use your own webview, included:
  
- @discussion Get this to add into your request if you are going to use your own webview, included:
  HTTP_X_APP_NAME: app name
  HTTP_X_REQUESTED_WITH: bundle identifier
  HTTP_X_DOWNLOAD_LINK: app download url, default is "url"
- 
- @return NSDictionary Dictionary contains extra headers.
  */
 
 +(NSDictionary *_Nonnull) getExtraHeaders;
 
 /**
- @brief Create string to sign from your params.
- @discussion If you don't use "success_url", default will be "pwlocal://paymentsuccessful", you can track this value on your webview's "shouldStartLoadWithRequest" or similar to close webview if you decide to use your own webview.
+ Create string to sign from your params, if you don't use "success_url", default will be "pwlocal://paymentsuccessful", you can track this value on your webview's "shouldStartLoadWithRequest" or similar to close webview if you decide to use your own webview
  
- @param params Can be Dictionary or object: DigitalGoodsDefautWidget / DigitalGoodsFlexibleWidget / VirtualCurrency / CartDefaultWidget.
- @return NSString Combine this string with your secret key to calculate the signature.
+ (id)params: Can be Dictionary or object: DigitalGoodsDefautWidget / DigitalGoodsFlexibleWidget / VirtualCurrency / CartDefaultWidget
  */
 +(NSString *_Nonnull) getStringToSign:(id _Nonnull)params;
 
