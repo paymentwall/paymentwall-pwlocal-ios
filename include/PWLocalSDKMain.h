@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 @class PWLocalResponse;
+@class PWLocalStatusResponse;
 
 @protocol PWLocalSDKDelegate <NSObject>
 
