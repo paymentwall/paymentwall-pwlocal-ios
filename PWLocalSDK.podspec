@@ -11,8 +11,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.source       = { :git => "https://github.com/paymentwall/paymentwall-pwlocal-ios.git", :tag => "#{s.version}" }
-  s.source_files  = "include" , "**/*.{h,m}"
+  s.source_files  = "include/*.h"
 
   s.vendored_libraries   = "libPWLocalSDK.a"
-  s.libraries = "PWLocalSDK"
 end
