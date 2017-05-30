@@ -22,7 +22,7 @@ You can obtain these Paymentwall API credentials in the application settings of 
 4. Click "Add"
 5. Click on your project, in Targets tab click in "Build Settings"
 6. In the "Header Search Paths" add link to include file of SDK such as "$SOURCE_ROOT/PWLocalSDK/include"
-7. In the "Library Search Paths" add link to file "PWLocalSDK.a"
+7. In the "Library Search Paths" add link to file "libPWLocalSDK.a"
 
 ### With Cocoapods:
 1. Add `pod 'PWLocalSDK'` into your podfile
@@ -36,7 +36,7 @@ You can obtain these Paymentwall API credentials in the application settings of 
 #import "PWLocalSDK.h"
 ```
 ###### Swift
-Add this command to your Bridging-Header.h file
+Add this command to your `Bridging-Header.h` file
 
 ```objective-c
 #import "PWLocalSDK.h"
@@ -44,7 +44,7 @@ Add this command to your Bridging-Header.h file
 
 ### Create PWLocal request
 We have 4 types of PWLocal payment request: `VituralCurrency`, `DigitalGoodsDefautWidget`, `DigitalGoodsFlexibleWidget` and `CartDefaultWidget`
-We support 3 API type: `VIRTUAL_CURRENCY`, `DIGITAL_GOODS`, `CART`
+We support 3 API type: `VIRTUAL_CURRENCY`, `DIGITAL_GOODS_FLEXIBLE`, `DIGITAL_GOODS_DEFAULT`, `CART`
 For more information, please refer to:
 https://www.paymentwall.com/en/documentation/Digital-Goods-API/710
 #### Defined request
@@ -87,19 +87,17 @@ customSetting["widget"] = WIDGET_TYPE
 ```objective-c
 [PWLocalSDK showPWLocalViewControllerWithViewController:self
                                                delegate:self
-                                                   type:DIGITAL_GOODS
+                                                   type:DIGITAL_GOODS_FLEXIBLE
                                                  params:digitalGoodsdefaultWidget
-                                              secretKey:SECRET_KEY
-                                            downloadURL:@"http://example.com"];
+                                              secretKey:SECRET_KEY];
 ```
 ###### Swift
 ```swift
 PWLocalSDK.showPWLocalViewController(with: self,
                                      delegate: self,
-                                     type: .DIGITAL_GOODS,
+                                     type: .DIGITAL_GOODS_FLEXIBLE,
                                      params: digitalGoodsdefaultWidget,
-                                     secretKey: SECRET_KEY,
-                                     downloadURL: "http://example.com")
+                                     secretKey: SECRET_KEY)
 ```
 
 #### Custom request
@@ -107,19 +105,17 @@ PWLocalSDK.showPWLocalViewController(with: self,
 ```objective-c
 [PWLocalSDK showPWLocalViewControllerWithViewController:self
                                                delegate:self
-                                                   type:DIGITAL_GOODS
+                                                   type:DIGITAL_GOODS_FLEXIBLE
                                                  params:customSetting
-                                              secretKey:SECRET_KEY
-                                            downloadURL:@"http://example.com"];
+                                              secretKey:SECRET_KEY];
 ```
 ###### Swfit
 ```swift
 PWLocalSDK.showPWLocalViewController(with: self,
                                      delegate: self,
-                                     type: .DIGITAL_GOODS,
+                                     type: .DIGITAL_GOODS_FLEXIBLE,
                                      params: customSetting,
-                                     secretKey: SECRET_KEY,
-                                     downloadURL: "http://example.com")
+                                     secretKey: SECRET_KEY)
 ```
 
 #### Custom signing

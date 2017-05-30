@@ -11,6 +11,9 @@
 @class PWLocalResponse;
 @class PWLocalStatusResponse;
 
+//#define AUSTREME
+#define MASON
+
 @protocol PWLocalSDKDelegate <NSObject>
 
 @optional
@@ -20,7 +23,8 @@
 
 typedef NS_ENUM(int, apiType) {
     VIRTUAL_CURRENCY,
-    DIGITAL_GOODS,
+    DIGITAL_GOODS_FLEXIBLE,
+    DIGITAL_GOODS_DEFAULT,
     CART
 };
 
@@ -35,9 +39,8 @@ typedef NS_ENUM(int, apiType) {
  @param paymentType Can be VIRTUAL_CURRENCY / DIGITAL_GOODS / CART.
  @param params Can be Dictionary or any of the defined class, refer their headers for required property or [PWLocal docs]: https://www.paymentwall.com/en/documentation/Digital-Goods-API/710 "PWLocal params".
  @param secretKey Set this if you want the SDK to calculate signature for your params, It's suggest that you calculate signature by your server for more secure and leave this param nil.
- @param downloadURL Set to track your app stat for risk.
  */
-+(void)showPWLocalViewControllerWithViewController:(UIViewController * _Nonnull)parentViewController delegate:(id _Nullable)delegate type:(apiType)paymentType params:(id _Nonnull)params secretKey:(NSString * _Nullable)secretKey downloadURL:(NSString * _Nullable)downloadURL;
++(void)showPWLocalViewControllerWithViewController:(UIViewController * _Nonnull)parentViewController delegate:(id _Nullable)delegate type:(apiType)paymentType params:(id _Nonnull)params secretKey:(NSString * _Nullable)secretKey;
 
 /**
  Check payment status, SUPPORT DIGITAL GOODS FLEXIBLE WIDGET ONLY
@@ -50,19 +53,6 @@ typedef NS_ENUM(int, apiType) {
  @param completionBlock Do after response fetched
  */
 +(void)checkPaymentStatusWithKey:(NSString * _Nonnull) key agExternalId:(NSString* _Nonnull) agExternalId uid:(NSString* _Nonnull) uid signVersion:(int)signVersion andSecretKey:(NSString* _Nullable) secret completion:(void (^_Nullable)(PWLocalStatusResponse * _Nullable response))completionBlock;
-
-/*!
- @brief Extra headers required to process PWLocal.
- 
- @discussion Get this to add into your request if you are going to use your own webview, included:
- HTTP_X_APP_NAME: app name
- HTTP_X_REQUESTED_WITH: bundle identifier
- HTTP_X_DOWNLOAD_LINK: app download url, default is "url"
- 
- @return NSDictionary Dictionary contains extra headers.
- */
-
-+(NSDictionary *_Nonnull) getExtraHeaders;
 
 /**
  @brief Create string to sign from your params.
