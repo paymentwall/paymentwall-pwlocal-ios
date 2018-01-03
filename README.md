@@ -212,7 +212,8 @@ Our SDK also support [Payment Status API.](https://www.paymentwall.com/en/docume
                          andSecretKey:@""
                            completion:^(PWLocalStatusResponse *response) {
                                if(response.code == PWLOCAL_STAUTS_SUCCESSFUL) {
-                                   if(response.dataResponse.count > 0)                                          PaymentStatus *paymentStatus = response.dataResponse.firstObject;
+                                   if(response.dataResponse.count > 0)
+                                        PaymentStatus *paymentStatus = response.dataResponse.firstObject;
                                    }
                                }
                                else
@@ -238,7 +239,8 @@ PWLocalSDK.checkPaymentStatusWithKey(PROJECT_KEY, agExternalId: A_EXTERNAL_ID, u
                          andSecretKey:SECRET_KEY
                            completion:^(PWLocalStatusResponse *response) {
                                if(response.code == PWLOCAL_STAUTS_SUCCESSFUL) {
-                                   if(response.dataResponse.count > 0)                                          PaymentStatus *paymentStatus = response.dataResponse.firstObject;
+                                   if(response.dataResponse.count > 0)
+                                        PaymentStatus *paymentStatus = response.dataResponse.firstObject;
                                    }
                                }
                                else
