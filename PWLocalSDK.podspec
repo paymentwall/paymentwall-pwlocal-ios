@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "PWLocalSDK"
-  s.version      = "2.2.1"
+  s.version      = "2.2.2"
   s.summary      = "PWLocal widget for iOS."
   s.description  = "PWLocal widget for iOS, for more info, please visit https://www.paymentwall.com/en/documentation/PWLocal-iOS-SDK/3358."
 
