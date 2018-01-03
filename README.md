@@ -43,12 +43,12 @@ Add this command to your `Bridging-Header.h` file
 ```
 
 ### Create PWLocal request
-We have 4 types of PWLocal payment request: `VituralCurrency`, `DigitalGoodsDefautWidget`, `DigitalGoodsFlexibleWidget` and `CartDefaultWidget`
+We have 4 types of PWLocal payment request: `VirtualCurrency`, `DigitalGoodsDefautWidget`, `DigitalGoodsFlexibleWidget` and `CartDefaultWidget`
 We support 3 API type: `VIRTUAL_CURRENCY`, `DIGITAL_GOODS_FLEXIBLE`, `DIGITAL_GOODS_DEFAULT`, `CART`
 For more information, please refer to:
 https://www.paymentwall.com/en/documentation/Digital-Goods-API/710
 #### Defined request
-We defined 4 types request: `VituralCurrency`, `DigitalGoodsDefautWidget`, `DigitalGoodsFlexibleWidget` and `CartDefaultWidget`. You can simply use setters to set required parameters. Please note that all the parameters are changed from under_score to camelCase format.
+We defined 4 types request: `VirtualCurrency`, `DigitalGoodsDefautWidget`, `DigitalGoodsFlexibleWidget` and `CartDefaultWidget`. You can simply use setters to set required parameters. Please note that all the parameters are changed from under_score to camelCase format.
 ##### Example
 ###### Objective-C
 ```objective-c
